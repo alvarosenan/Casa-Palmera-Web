@@ -1,4 +1,11 @@
 // Casa Palmera — interacciones de la web
+import { translations, getLang, applyTranslations } from './i18n.js';
+
+// Idioma: aplica el guardado (o español por defecto) y conecta el selector
+applyTranslations(getLang());
+document.querySelectorAll('.lang-btn').forEach((btn) => {
+  btn.addEventListener('click', () => applyTranslations(btn.dataset.lang));
+});
 
 // Nav: fondo al hacer scroll + menú móvil
 const nav = document.getElementById('nav');
@@ -122,3 +129,11 @@ document.querySelectorAll('.faq-p').forEach((btn) => {
     }
   });
 });
+
+// Formulario de contacto (de ejemplo — falta conectarlo a un email o CRM real)
+document.getElementById('formContacto')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const lang = getLang();
+  alert(translations['contacto.alertaEnvio'][lang]);
+});
+

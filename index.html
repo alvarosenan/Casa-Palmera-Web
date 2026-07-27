@@ -13,11 +13,13 @@
 <meta property="og:url" content="https://casa-palmera-web.vercel.app/">
 <meta property="og:site_name" content="Casa Palmera">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://casa-palmera-web.vercel.app/images/hero.jpg">
+<meta property="og:image" content="https://casa-palmera-web.vercel.app/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Casa Palmera | Alojamiento vacacional en El Mojón">
 <meta name="twitter:description" content="Alojamiento vacacional entre el Mediterráneo y el Mar Menor, a 3 minutos andando de la playa.">
-<meta name="twitter:image" content="https://casa-palmera-web.vercel.app/images/hero.jpg">
+<meta name="twitter:image" content="https://casa-palmera-web.vercel.app/images/og-cover.jpg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +39,7 @@
     "addressCountry": "ES"
   },
   "petsAllowed": true,
-  "numberOfRooms": 4,
+  "numberOfRooms": 3,
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Aire acondicionado", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "WiFi de fibra", "value": true },
@@ -108,6 +110,11 @@ section{position:relative;}
 .nav .btn-claro{padding:11px 22px; font-size:10.5px;}
 .nav-burger{display:none; flex-direction:column; gap:6px; width:24px;}
 .nav-burger span{height:1px; background:var(--crema); width:100%;}
+.lang-switch{display:flex; align-items:center; gap:6px;}
+.lang-btn{display:flex; align-items:center; gap:5px; font-size:15px; opacity:.5; transition:opacity .25s ease; padding:4px;}
+.lang-btn span{font-size:10px; letter-spacing:.06em; color:var(--crema);}
+.lang-btn.activo{opacity:1;}
+.nav.scrolled .lang-btn span{color:var(--marino);}
 .nav.scrolled{background:rgba(250,246,238,0.94); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--linea); padding:16px 0;}
 .nav.scrolled .nav-logo, .nav.scrolled .nav-links a{color:var(--marino);}
 .nav.scrolled .btn-claro{background:var(--marino); color:var(--crema); border-color:var(--marino);}
@@ -328,14 +335,18 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
   <div class="wrap">
     <a href="#inicio" class="nav-logo"><svg class="palma"><use href="#ico-palma"/></svg>Casa Palmera</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#casa">La casa</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#zona">La zona</a></li>
-      <li><a href="#faq">Preguntas</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#casa" data-i18n="nav.casa">La casa</a></li>
+      <li><a href="#galeria" data-i18n="nav.galeria">Galería</a></li>
+      <li><a href="#zona" data-i18n="nav.zona">La zona</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">Preguntas</a></li>
+      <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#contacto" class="btn btn-claro">Reservar</a>
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Idioma / Language">
+        <button class="lang-btn" data-lang="es" aria-label="Español">🇪🇸<span>ES</span></button>
+        <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧<span>EN</span></button>
+      </div>
+      <a href="#contacto" class="btn btn-claro" data-i18n="nav.reservar">Reservar</a>
       <button class="nav-burger" id="navBurger"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -345,12 +356,12 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
   <div class="hero-slides" id="heroSlides"></div>
   <div class="hero-overlay"></div>
   <div class="hero-contenido">
-    <p class="hero-kicker">El Mojón · San Pedro del Pinatar · Murcia</p>
+    <p class="hero-kicker" data-i18n="hero.kicker">El Mojón · San Pedro del Pinatar · Murcia</p>
     <h1>Casa Palmera</h1>
-    <p class="hero-tagline">Tu refugio entre el Mediterráneo y el Mar Menor, a tres minutos andando de la playa.</p>
+    <p class="hero-tagline" data-i18n="hero.tagline">Tu refugio entre el Mediterráneo y el Mar Menor, a tres minutos andando de la playa.</p>
     <div class="hero-botones">
-      <a href="#contacto" class="btn btn-claro">Reservar</a>
-      <a href="#zona" class="btn btn-fantasma">Descubrir la zona</a>
+      <a href="#contacto" class="btn btn-claro" data-i18n="hero.btnReservar">Reservar</a>
+      <a href="#zona" class="btn btn-fantasma" data-i18n="hero.btnZona">Descubrir la zona</a>
     </div>
   </div>
   <div class="hero-ola ola ola-clara"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,30 C800,60 1000,10 1200,40 L1200,70 L0,70 Z"/></svg></div>
@@ -361,23 +372,23 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
     <div class="casa-grid">
       <div class="casa-foto reveal"><img src="/images/galeria/salon-1.jpg" alt="Salón de Casa Palmera" loading="lazy"></div>
       <div class="casa-texto reveal">
-        <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>La casa</p>
-        <h2>Una base tranquila para explorar la Costa Cálida</h2>
-        <p>Casa Palmera combina la calma de una casa mediterránea con todo lo necesario para desconectar: espacios luminosos, terraza para las tardes largas y una ubicación que te deja a minutos del mar y de las salinas.</p>
+        <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="casa.eyebrow">La casa</span></p>
+        <h2 data-i18n="casa.title">Una base tranquila para explorar la Costa Cálida</h2>
+        <p data-i18n="casa.text">Casa Palmera combina la calma de una casa mediterránea con todo lo necesario para desconectar: espacios luminosos, terraza para las tardes largas y una ubicación que te deja a minutos del mar y de las salinas.</p>
         <div class="casa-cifras">
-          <div class="cifra"><b>5</b><span>Huéspedes</span></div>
-          <div class="cifra"><b>4</b><span>Habitaciones</span></div>
-          <div class="cifra"><b>1</b><span>Baño</span></div>
-          <div class="cifra"><b>3 min</b><span>A la playa</span></div>
+          <div class="cifra"><b>5</b><span data-i18n="casa.cifraHuespedes">Huéspedes</span></div>
+          <div class="cifra"><b>3</b><span data-i18n="casa.cifraHabitaciones">Habitaciones</span></div>
+          <div class="cifra"><b>1</b><span data-i18n="casa.cifraBano">Baño</span></div>
+          <div class="cifra"><b>3 min</b><span data-i18n="casa.cifraPlaya">A la playa</span></div>
         </div>
         <div class="amenidades">
-          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Aire acondicionado</div>
-          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>WiFi de fibra</div>
-          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Cocina equipada</div>
-          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>TV</div>
-          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Lavadora</div>
-          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Pet friendly</div>
-          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Terraza privada</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="casa.am1">Aire acondicionado</span></div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="casa.am2">WiFi de fibra</span></div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="casa.am3">Cocina equipada</span></div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg><span>TV</span></div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="casa.am5">Lavadora</span></div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="casa.am6">Pet friendly</span></div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="casa.am7">Terraza privada</span></div>
         </div>
       </div>
     </div>
@@ -389,16 +400,16 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="galeria pad" id="galeria">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Galería</p>
-      <h2>Cada rincón de la casa</h2>
-      <p>Una fotografía real de cada espacio. Toca cualquier imagen para verla en grande.</p>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="galeria.eyebrow">Galería</span></p>
+      <h2 data-i18n="galeria.title">Cada rincón de la casa</h2>
+      <p data-i18n="galeria.text">Una fotografía real de cada espacio. Toca cualquier imagen para verla en grande.</p>
     </div>
     <div class="mosaico reveal" id="mosaico"></div>
   </div>
 </section>
 
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-cerrar" id="lightboxCerrar">Cerrar ✕</button>
+  <button class="lightbox-cerrar" id="lightboxCerrar" data-i18n="galeria.cerrar">Cerrar ✕</button>
   <img id="lightboxImg" src="" alt="">
 </div>
 
@@ -406,70 +417,70 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
   <div class="wrap">
     <div class="dispo-caja reveal">
       <div>
-        <p class="eyebrow" style="color:rgba(250,246,238,.75);"><svg class="palma"><use href="#ico-palma"/></svg>Disponibilidad</p>
-        <h3>Reserva tus fechas</h3>
-        <p>Consulta el calendario y escríbenos para confirmar tu estancia.</p>
-        <a href="#contacto" class="btn btn-claro">Consultar fechas</a>
+        <p class="eyebrow" style="color:rgba(250,246,238,.75);"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="dispo.eyebrow">Disponibilidad</span></p>
+        <h3 data-i18n="dispo.title">Reserva tus fechas</h3>
+        <p data-i18n="dispo.text">Consulta el calendario y escríbenos para confirmar tu estancia.</p>
+        <a href="#contacto" class="btn btn-claro" data-i18n="dispo.btn">Consultar fechas</a>
       </div>
       <div class="mini-cal">
-        <div class="mini-cal-cab"><span>‹</span><span>AGOSTO 2026</span><span>›</span></div>
+        <div class="mini-cal-cab"><span>‹</span><span data-i18n="dispo.mes">AGOSTO 2026</span><span>›</span></div>
         <div class="mini-cal-grid">
-          <span style="opacity:.4">L</span><span style="opacity:.4">M</span><span style="opacity:.4">X</span><span style="opacity:.4">J</span><span style="opacity:.4">V</span><span style="opacity:.4">S</span><span style="opacity:.4">D</span>
+          <span style="opacity:.4" data-i18n="dispo.diaL">L</span><span style="opacity:.4" data-i18n="dispo.diaM">M</span><span style="opacity:.4" data-i18n="dispo.diaX">X</span><span style="opacity:.4" data-i18n="dispo.diaJ">J</span><span style="opacity:.4" data-i18n="dispo.diaV">V</span><span style="opacity:.4" data-i18n="dispo.diaS">S</span><span style="opacity:.4" data-i18n="dispo.diaD">D</span>
           <span></span><span></span><span></span><span></span><span></span><span class="disp">1</span><span class="disp">2</span>
           <span class="disp">3</span><span class="disp">4</span><span class="res">5</span><span class="res">6</span><span class="res">7</span><span class="res">8</span><span class="res">9</span>
           <span class="res">10</span><span class="res">11</span><span class="res">12</span><span class="res">13</span><span class="res">14</span><span class="disp">15</span><span class="disp">16</span>
           <span class="disp">17</span><span class="disp">18</span><span class="disp">19</span><span class="disp">20</span><span class="disp">21</span><span class="disp">22</span><span class="disp">23</span>
           <span class="disp">24</span><span class="disp">25</span><span class="disp">26</span><span class="disp">27</span><span class="disp">28</span><span class="disp">29</span><span class="disp">30</span>
         </div>
-        <div class="leyenda"><span><i class="punto disp"></i>Disponible</span><span><i class="punto res"></i>Reservado</span></div>
+        <div class="leyenda"><span><i class="punto disp"></i><span data-i18n="dispo.disponible">Disponible</span></span><span><i class="punto res"></i><span data-i18n="dispo.reservado">Reservado</span></span></div>
       </div>
     </div>
-    <p class="placeholder-nota" style="margin-top:14px;">* Calendario de ejemplo — pendiente de conectar a Booking / Airbnb / iCal.</p>
+    <p class="placeholder-nota" style="margin-top:14px;" data-i18n="dispo.nota">* Calendario de ejemplo — pendiente de conectar a Booking / Airbnb / iCal.</p>
   </div>
 </section>
 
 <section class="zona pad" id="zona">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Descubre la zona</p>
-      <h2>Aquí hay mucho que hacer</h2>
-      <p>Casa Palmera es el punto de partida perfecto para playas, salinas, gastronomía y la Costa Cálida entera.</p>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="zona.eyebrow">Descubre la zona</span></p>
+      <h2 data-i18n="zona.title">Aquí hay mucho que hacer</h2>
+      <p data-i18n="zona.text">Casa Palmera es el punto de partida perfecto para playas, salinas, gastronomía y la Costa Cálida entera.</p>
     </div>
 
     <div class="zona-foto-ancha reveal">
       <img src="/images/galeria/playa-1.jpg" alt="Playa cerca de Casa Palmera" loading="lazy">
-      <span class="tag">A 3 minutos andando</span>
+      <span class="tag" data-i18n="zona.tagPlaya">A 3 minutos andando</span>
     </div>
 
     <div class="categoria reveal">
-      <h3>Playas</h3>
-      <p class="categoria-desc">Las playas de El Mojón limitan con el Parque Regional de las Salinas y Arenales: paseo marítimo, arena fina y servicios accesibles.</p>
+      <h3 data-i18n="zona.catPlayas">Playas</h3>
+      <p class="categoria-desc" data-i18n="zona.descPlayas">Las playas de El Mojón limitan con el Parque Regional de las Salinas y Arenales: paseo marítimo, arena fina y servicios accesibles.</p>
       <p class="lista-lugares"><b>Playa El Mojón</b><span class="sep">·</span>Torre Derribada<span class="sep">·</span>La Llana<span class="sep">·</span>Las Salinas<span class="sep">·</span>Barraca Quemada<span class="sep">·</span>Punta de Algas<span class="sep">·</span>Villananitos<span class="sep">·</span>La Puntica<span class="sep">·</span>Las Higuericas<span class="sep">·</span>Mil Palmeras<span class="sep">·</span>Las Encañizadas</p>
     </div>
 
     <div class="categoria reveal">
-      <h3>Naturaleza</h3>
-      <p class="categoria-desc">El parque combina salinas en explotación, senderos, observatorios, playas naturales y uno de los humedales más importantes del Mediterráneo.</p>
+      <h3 data-i18n="zona.catNaturaleza">Naturaleza</h3>
+      <p class="categoria-desc" data-i18n="zona.descNaturaleza">El parque combina salinas en explotación, senderos, observatorios, playas naturales y uno de los humedales más importantes del Mediterráneo.</p>
       <p class="lista-lugares"><b>Parque Regional Salinas y Arenales</b><span class="sep">·</span>Flamencos<span class="sep">·</span>Observatorios de aves<span class="sep">·</span>Senderos<span class="sep">·</span>Dunas<span class="sep">·</span>Carril bici<span class="sep">·</span>Encañizadas<span class="sep">·</span>Molinos de Quintín<span class="sep">·</span>Molino de la Calcetera</p>
     </div>
 
     <div class="categoria reveal">
-      <h3>Deportes y actividad</h3>
+      <h3 data-i18n="zona.catDeportes">Deportes y actividad</h3>
       <p class="lista-lugares">Paddle surf<span class="sep">·</span>Kayak<span class="sep">·</span>Windsurf<span class="sep">·</span>Vela<span class="sep">·</span>Bicicleta<span class="sep">·</span>Senderismo<span class="sep">·</span>Birdwatching<span class="sep">·</span>Buceo<span class="sep">·</span>Snorkel<span class="sep">·</span>Pesca deportiva</p>
     </div>
 
     <div class="categoria reveal">
-      <h3>Restaurantes y heladerías</h3>
+      <h3 data-i18n="zona.catRestaurantes">Restaurantes y heladerías</h3>
       <p class="lista-lugares">Venezuela<span class="sep">·</span>El Rubio 360°<span class="sep">·</span>Casa Lucrecia<span class="sep">·</span>La Casa del Reloj<span class="sep">·</span>El Rincón Italiano<span class="sep">·</span>El Mosqui<span class="sep">·</span>Los Molinos<span class="sep">·</span><b>Heladería Galán</b><span class="sep">·</span>Sirvent<span class="sep">·</span>Gelateria Italiana</p>
     </div>
 
     <div class="categoria reveal">
-      <h3>Supermercados y puertos</h3>
-      <p class="lista-lugares"><b>Supermercado Buen Día</b> — junto a la casa<span class="sep">·</span>Mercadona<span class="sep">·</span>Lidl<span class="sep">·</span>Aldi<span class="sep">·</span>Consum<span class="sep">·</span>Puerto Deportivo de San Pedro<span class="sep">·</span>Puerto Tomás Maestre<span class="sep">·</span>Lo Pagán</p>
+      <h3 data-i18n="zona.catSuper">Supermercados y puertos</h3>
+      <p class="lista-lugares"><b>Supermercado Buen Día</b> <span data-i18n="zona.juntoCasa">— junto a la casa</span><span class="sep">·</span>Mercadona<span class="sep">·</span>Lidl<span class="sep">·</span>Aldi<span class="sep">·</span>Consum<span class="sep">·</span>Puerto Deportivo de San Pedro<span class="sep">·</span>Puerto Tomás Maestre<span class="sep">·</span>Lo Pagán</p>
     </div>
 
     <div class="categoria reveal" style="border-bottom:1px solid var(--linea); padding-bottom:44px;">
-      <h3>Baños de lodo y spa</h3>
+      <h3 data-i18n="zona.catBanos">Baños de lodo y spa</h3>
       <p class="lista-lugares"><b>Baños de lodo de Lo Pagán</b><span class="sep">·</span>Talasoterapia<span class="sep">·</span>Spa<span class="sep">·</span>Masajes</p>
     </div>
   </div>
@@ -478,23 +489,23 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="excursiones pad" id="excursiones">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Lugares para visitar</p>
-      <h2>A un paseo en coche</h2>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="excursiones.eyebrow">Lugares para visitar</span></p>
+      <h2 data-i18n="excursiones.title">A un paseo en coche</h2>
     </div>
     <div class="tiempo-grid reveal">
-      <div class="tiempo-celda"><span class="min">5 <span>min</span></span><ul><li>Lo Pagán</li><li>San Pedro del Pinatar</li></ul></div>
-      <div class="tiempo-celda"><span class="min">10 <span>min</span></span><ul><li>Pilar de la Horadada</li><li>Torre de la Horadada</li></ul></div>
-      <div class="tiempo-celda"><span class="min">15 <span>min</span></span><ul><li>Santiago de la Ribera</li></ul></div>
-      <div class="tiempo-celda"><span class="min">20 <span>min</span></span><ul><li>La Manga Norte</li></ul></div>
-      <div class="tiempo-celda"><span class="min">30 <span>min</span></span><ul><li>Cabo Roig</li><li>Campoamor</li></ul></div>
-      <div class="tiempo-celda"><span class="min">35 <span>min</span></span><ul><li>Cartagena</li></ul></div>
-      <div class="tiempo-celda"><span class="min">45 <span>min</span></span><ul><li>Murcia</li></ul></div>
+      <div class="tiempo-celda"><span class="min">5 <span data-i18n="excursiones.min">min</span></span><ul><li>Lo Pagán</li><li>San Pedro del Pinatar</li></ul></div>
+      <div class="tiempo-celda"><span class="min">10 <span data-i18n="excursiones.min">min</span></span><ul><li>Pilar de la Horadada</li><li>Torre de la Horadada</li></ul></div>
+      <div class="tiempo-celda"><span class="min">15 <span data-i18n="excursiones.min">min</span></span><ul><li>Santiago de la Ribera</li></ul></div>
+      <div class="tiempo-celda"><span class="min">20 <span data-i18n="excursiones.min">min</span></span><ul><li>La Manga Norte</li></ul></div>
+      <div class="tiempo-celda"><span class="min">30 <span data-i18n="excursiones.min">min</span></span><ul><li>Cabo Roig</li><li>Campoamor</li></ul></div>
+      <div class="tiempo-celda"><span class="min">35 <span data-i18n="excursiones.min">min</span></span><ul><li>Cartagena</li></ul></div>
+      <div class="tiempo-celda"><span class="min">45 <span data-i18n="excursiones.min">min</span></span><ul><li>Murcia</li></ul></div>
       <div class="tiempo-celda"><span class="min">1h <span>00</span></span><ul><li>Alicante</li></ul></div>
     </div>
     <div class="destacadas-grid reveal">
-      <div class="destacada"><div class="estrellas">★★★★★</div><h4>Calblanque</h4><p class="tiempo">35 min en coche</p></div>
-      <div class="destacada"><div class="estrellas">★★★★☆</div><h4>Cabo de Palos</h4><p class="tiempo">30 min en coche</p></div>
-      <div class="destacada"><div class="estrellas">★★★★☆</div><h4>Cartagena romana</h4><p class="tiempo">35 min en coche</p></div>
+      <div class="destacada"><div class="estrellas">★★★★★</div><h4>Calblanque</h4><p class="tiempo"><span data-i18n="excursiones.d35">35 min en coche</span></p></div>
+      <div class="destacada"><div class="estrellas">★★★★☆</div><h4>Cabo de Palos</h4><p class="tiempo"><span data-i18n="excursiones.d30">30 min en coche</span></p></div>
+      <div class="destacada"><div class="estrellas">★★★★☆</div><h4 data-i18n="excursiones.cartagenaRomana">Cartagena romana</h4><p class="tiempo"><span data-i18n="excursiones.d35">35 min en coche</span></p></div>
     </div>
   </div>
 </section>
@@ -504,9 +515,9 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="brujula-sec pad">
   <div class="wrap">
     <div class="cab centro reveal" style="margin-left:auto; margin-right:auto;">
-      <p class="eyebrow" style="justify-content:center;"><svg class="palma"><use href="#ico-palma"/></svg>A tu alcance</p>
-      <h2>Casa Palmera, en el centro de todo</h2>
-      <p style="margin:0 auto;">Todo lo que te interesa, a un paseo o a un momento en coche.</p>
+      <p class="eyebrow" style="justify-content:center;"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="cerca.eyebrow">A tu alcance</span></p>
+      <h2 data-i18n="cerca.title">Casa Palmera, en el centro de todo</h2>
+      <p style="margin:0 auto;" data-i18n="cerca.text">Todo lo que te interesa, a un paseo o a un momento en coche.</p>
     </div>
     <div class="cerca reveal">
       <div class="cerca-centro">
@@ -514,16 +525,16 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
         <b>Casa Palmera</b>
       </div>
       <div class="cerca-chips">
-        <span><b>Playa El Mojón</b><em>3 min andando</em></span>
-        <span><b>Parque Regional Salinas</b><em>5 min en coche</em></span>
-        <span><b>Supermercado Buen Día</b><em>a un paseo</em></span>
-        <span><b>Lo Pagán</b><em>5 min en coche</em></span>
-        <span><b>Restaurantes y heladería</b><em>a un paseo</em></span>
+        <span><b>Playa El Mojón</b><em data-i18n="cerca.c1">3 min andando</em></span>
+        <span><b>Parque Regional Salinas</b><em data-i18n="cerca.c2">5 min en coche</em></span>
+        <span><b>Supermercado Buen Día</b><em data-i18n="cerca.c3">a un paseo</em></span>
+        <span><b>Lo Pagán</b><em data-i18n="cerca.c2">5 min en coche</em></span>
+        <span><b data-i18n="cerca.restaurantes">Restaurantes y heladería</b><em data-i18n="cerca.c3">a un paseo</em></span>
       </div>
     </div>
     <div class="anillos reveal">
-      <div class="anillo"><h5>15–20 min</h5><span>Torre de la Horadada</span><span>Santiago de la Ribera</span><span>La Manga</span></div>
-      <div class="anillo"><h5>30–60 min</h5><span>Calblanque</span><span>Cartagena</span><span>Murcia</span><span>Alicante</span></div>
+      <div class="anillo"><h5 data-i18n="cerca.anillo1">15–20 min</h5><span>Torre de la Horadada</span><span>Santiago de la Ribera</span><span>La Manga</span></div>
+      <div class="anillo"><h5 data-i18n="cerca.anillo2">30–60 min</h5><span>Calblanque</span><span>Cartagena</span><span>Murcia</span><span>Alicante</span></div>
     </div>
   </div>
 </section>
@@ -533,14 +544,14 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="mapa-sec pad">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Mapa</p>
-      <h2>Todo, cerca</h2>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="mapa.eyebrow">Mapa</span></p>
+      <h2 data-i18n="mapa.title">Todo, cerca</h2>
     </div>
     <div class="mapa-caja reveal">
       <div class="mapa-lienzo">
         <svg class="palma"><use href="#ico-palma"/></svg>
-        <p>Aquí se integrará el mapa interactivo (Google Maps) con la casa y los puntos de interés.</p>
-        <span>Pendiente de clave de API</span>
+        <p data-i18n="mapa.text">Aquí se integrará el mapa interactivo (Google Maps) con la casa y los puntos de interés.</p>
+        <span data-i18n="mapa.pendiente">Pendiente de clave de API</span>
       </div>
     </div>
   </div>
@@ -549,16 +560,16 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="guias pad" id="guias">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Guías del destino</p>
-      <h2>Para planear tu estancia</h2>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="guias.eyebrow">Guías del destino</span></p>
+      <h2 data-i18n="guias.title">Para planear tu estancia</h2>
     </div>
     <div class="guias-grid reveal">
-      <div class="guia"><h4>Las mejores playas cerca de Casa Palmera</h4><span>Próximamente</span></div>
-      <div class="guia"><h4>Qué hacer en San Pedro en 3 días</h4><span>Próximamente</span></div>
-      <div class="guia"><h4>Ruta por las Salinas</h4><span>Próximamente</span></div>
-      <div class="guia"><h4>Dónde ver flamencos</h4><span>Próximamente</span></div>
-      <div class="guia"><h4>Los mejores atardeceres</h4><span>Próximamente</span></div>
-      <div class="guia"><h4>Guía para familias</h4><span>Próximamente</span></div>
+      <div class="guia"><h4 data-i18n="guias.g1">Las mejores playas cerca de Casa Palmera</h4><span data-i18n="guias.proximamente">Próximamente</span></div>
+      <div class="guia"><h4 data-i18n="guias.g2">Qué hacer en San Pedro en 3 días</h4><span data-i18n="guias.proximamente">Próximamente</span></div>
+      <div class="guia"><h4 data-i18n="guias.g3">Ruta por las Salinas</h4><span data-i18n="guias.proximamente">Próximamente</span></div>
+      <div class="guia"><h4 data-i18n="guias.g4">Dónde ver flamencos</h4><span data-i18n="guias.proximamente">Próximamente</span></div>
+      <div class="guia"><h4 data-i18n="guias.g5">Los mejores atardeceres</h4><span data-i18n="guias.proximamente">Próximamente</span></div>
+      <div class="guia"><h4 data-i18n="guias.g6">Guía para familias</h4><span data-i18n="guias.proximamente">Próximamente</span></div>
     </div>
   </div>
 </section>
@@ -566,19 +577,19 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="info pad">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Información útil</p>
-      <h2>Todo lo práctico</h2>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="info.eyebrow">Información útil</span></p>
+      <h2 data-i18n="info.title">Todo lo práctico</h2>
     </div>
     <div class="info-grid reveal">
-      <div class="info-celda"><span>Aeropuerto de Murcia · 45 min</span></div>
-      <div class="info-celda"><span>Aeropuerto de Alicante · 1 h</span></div>
-      <div class="info-celda"><span>Taxi y Uber disponibles</span></div>
-      <div class="info-celda"><span>Hospital a 15 min</span></div>
-      <div class="info-celda"><span>Farmacias en El Mojón</span></div>
-      <div class="info-celda"><span>Emergencias · 112</span></div>
-      <div class="info-celda"><span>Clima mediterráneo</span></div>
-      <div class="info-celda"><span>Se admiten mascotas</span></div>
-      <div class="info-celda"><span>Guía de equipaje</span></div>
+      <div class="info-celda"><span data-i18n="info.i1">Aeropuerto de Murcia · 45 min</span></div>
+      <div class="info-celda"><span data-i18n="info.i2">Aeropuerto de Alicante · 1 h</span></div>
+      <div class="info-celda"><span data-i18n="info.i3">Taxi y Uber disponibles</span></div>
+      <div class="info-celda"><span data-i18n="info.i4">Hospital a 15 min</span></div>
+      <div class="info-celda"><span data-i18n="info.i5">Farmacias en El Mojón</span></div>
+      <div class="info-celda"><span data-i18n="info.i6">Emergencias · 112</span></div>
+      <div class="info-celda"><span data-i18n="info.i7">Clima mediterráneo</span></div>
+      <div class="info-celda"><span data-i18n="info.i8">Se admiten mascotas</span></div>
+      <div class="info-celda"><span data-i18n="info.i9">Guía de equipaje</span></div>
     </div>
   </div>
 </section>
@@ -586,13 +597,13 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="opiniones pad">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Opiniones</p>
-      <h2>Lo que dicen nuestros huéspedes</h2>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="opiniones.eyebrow">Opiniones</span></p>
+      <h2 data-i18n="opiniones.title">Lo que dicen nuestros huéspedes</h2>
     </div>
     <div class="opiniones-grid reveal">
-      <div class="opinion"><div class="estrellas">★★★★★</div><p>"Una ubicación perfecta para descubrir tanto el Mar Menor como el Mediterráneo."</p><div class="autor">Familia González</div></div>
-      <div class="opinion"><div class="estrellas">★★★★★</div><p>"La casa tiene todo lo que necesitas y el barrio es tranquilísimo. Volveremos."</p><div class="autor">Marta y Pau</div></div>
-      <div class="opinion"><div class="estrellas">★★★★★</div><p>"Ir andando a la playa por la mañana y cenar en la terraza al volver. Así de fácil."</p><div class="autor">Anna R.</div></div>
+      <div class="opinion"><div class="estrellas">★★★★★</div><p data-i18n="opiniones.o1">"Una ubicación perfecta para descubrir tanto el Mar Menor como el Mediterráneo."</p><div class="autor">Familia González</div></div>
+      <div class="opinion"><div class="estrellas">★★★★★</div><p data-i18n="opiniones.o2">"La casa tiene todo lo que necesitas y el barrio es tranquilísimo. Volveremos."</p><div class="autor">Marta y Pau</div></div>
+      <div class="opinion"><div class="estrellas">★★★★★</div><p data-i18n="opiniones.o3">"Ir andando a la playa por la mañana y cenar en la terraza al volver. Así de fácil."</p><div class="autor">Anna R.</div></div>
     </div>
   </div>
 </section>
@@ -600,17 +611,17 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="faq pad" id="faq">
   <div class="wrap">
     <div class="cab centro reveal" style="margin-left:auto; margin-right:auto;">
-      <p class="eyebrow" style="justify-content:center;"><svg class="palma"><use href="#ico-palma"/></svg>Preguntas frecuentes</p>
-      <h2>Todo lo que necesitas saber</h2>
+      <p class="eyebrow" style="justify-content:center;"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="faq.eyebrow">Preguntas frecuentes</span></p>
+      <h2 data-i18n="faq.title">Todo lo que necesitas saber</h2>
     </div>
     <div class="faq-lista reveal">
-      <div class="faq-item"><button class="faq-p">¿Aceptáis mascotas?<span class="signo">+</span></button><div class="faq-r"><p>Sí, Casa Palmera es pet friendly. Escríbenos antes de reservar para confirmar detalles.</p></div></div>
-      <div class="faq-item"><button class="faq-p">¿Hay WiFi?<span class="signo">+</span></button><div class="faq-r"><p>Sí, WiFi de fibra en toda la casa.</p></div></div>
-      <div class="faq-item"><button class="faq-p">¿Está cerca de la playa?<span class="signo">+</span></button><div class="faq-r"><p>La Playa de El Mojón está a 3 minutos andando.</p></div></div>
-      <div class="faq-item"><button class="faq-p">¿Cómo funciona el check-in?<span class="signo">+</span></button><div class="faq-r"><p>Check-in autónomo desde las 16:00h, con instrucciones por WhatsApp antes de tu llegada.</p></div></div>
-      <div class="faq-item"><button class="faq-p">¿Hay supermercado cerca?<span class="signo">+</span></button><div class="faq-r"><p>Sí, el Supermercado Buen Día está a un paseo, y Mercadona y Lidl a pocos minutos en coche.</p></div></div>
-      <div class="faq-item"><button class="faq-p">¿Cuántas personas caben?<span class="signo">+</span></button><div class="faq-r"><p>Por ahora, Casa Palmera tiene capacidad para 5 huéspedes.</p></div></div>
-      <div class="faq-item"><button class="faq-p">¿Tenéis licencia turística?<span class="signo">+</span></button><div class="faq-r"><p>Sí, en regla (número indicado en el pie de página).</p></div></div>
+      <div class="faq-item"><button class="faq-p"><span data-i18n="faq.q1">¿Aceptáis mascotas?</span><span class="signo">+</span></button><div class="faq-r"><p data-i18n="faq.a1">Sí, Casa Palmera es pet friendly. Escríbenos antes de reservar para confirmar detalles.</p></div></div>
+      <div class="faq-item"><button class="faq-p"><span data-i18n="faq.q2">¿Hay WiFi?</span><span class="signo">+</span></button><div class="faq-r"><p data-i18n="faq.a2">Sí, WiFi de fibra en toda la casa.</p></div></div>
+      <div class="faq-item"><button class="faq-p"><span data-i18n="faq.q3">¿Está cerca de la playa?</span><span class="signo">+</span></button><div class="faq-r"><p data-i18n="faq.a3">La Playa de El Mojón está a 3 minutos andando.</p></div></div>
+      <div class="faq-item"><button class="faq-p"><span data-i18n="faq.q4">¿Cómo funciona el check-in?</span><span class="signo">+</span></button><div class="faq-r"><p data-i18n="faq.a4">Check-in autónomo desde las 16:00h, con instrucciones por WhatsApp antes de tu llegada.</p></div></div>
+      <div class="faq-item"><button class="faq-p"><span data-i18n="faq.q5">¿Hay supermercado cerca?</span><span class="signo">+</span></button><div class="faq-r"><p data-i18n="faq.a5">Sí, el Supermercado Buen Día está a un paseo, y Mercadona y Lidl a pocos minutos en coche.</p></div></div>
+      <div class="faq-item"><button class="faq-p"><span data-i18n="faq.q6">¿Cuántas personas caben?</span><span class="signo">+</span></button><div class="faq-r"><p data-i18n="faq.a6">Por ahora, Casa Palmera tiene capacidad para 5 huéspedes.</p></div></div>
+      <div class="faq-item"><button class="faq-p"><span data-i18n="faq.q7">¿Tenéis licencia turística?</span><span class="signo">+</span></button><div class="faq-r"><p data-i18n="faq.a7">Sí, en regla (número indicado en el pie de página).</p></div></div>
     </div>
   </div>
 </section>
@@ -618,27 +629,27 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
 <section class="contacto pad" id="contacto">
   <div class="wrap">
     <div class="cab reveal">
-      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Contacto</p>
-      <h2>Cuéntanos tus fechas</h2>
-      <p>Responderemos en menos de 24 horas con disponibilidad y precio.</p>
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg><span data-i18n="contacto.eyebrow">Contacto</span></p>
+      <h2 data-i18n="contacto.title">Cuéntanos tus fechas</h2>
+      <p data-i18n="contacto.text">Responderemos en menos de 24 horas con disponibilidad y precio.</p>
     </div>
     <div class="contacto-grid">
-      <form class="reveal" onsubmit="event.preventDefault(); alert('Formulario de ejemplo — conéctalo a tu email o CRM.');">
+      <form class="reveal" id="formContacto">
         <div class="campo-fila">
-          <div class="campo"><label>Nombre</label><input type="text" required></div>
-          <div class="campo"><label>Email</label><input type="email" required></div>
+          <div class="campo"><label data-i18n="contacto.nombre">Nombre</label><input type="text" required></div>
+          <div class="campo"><label data-i18n="contacto.email">Email</label><input type="email" required></div>
         </div>
         <div class="campo-fila">
-          <div class="campo"><label>Entrada</label><input type="date"></div>
-          <div class="campo"><label>Salida</label><input type="date"></div>
+          <div class="campo"><label data-i18n="contacto.entrada">Entrada</label><input type="date"></div>
+          <div class="campo"><label data-i18n="contacto.salida">Salida</label><input type="date"></div>
         </div>
-        <div class="campo"><label>Mensaje</label><textarea rows="4"></textarea></div>
-        <button class="btn btn-claro" style="margin-top:12px;">Enviar consulta</button>
-        <p class="placeholder-nota">* Formulario de ejemplo — falta conectarlo a un email o servicio como Formspree.</p>
+        <div class="campo"><label data-i18n="contacto.mensaje">Mensaje</label><textarea rows="4"></textarea></div>
+        <button class="btn btn-claro" style="margin-top:12px;" data-i18n="contacto.enviar">Enviar consulta</button>
+        <p class="placeholder-nota" data-i18n="contacto.notaForm">* Formulario de ejemplo — falta conectarlo a un email o servicio como Formspree.</p>
       </form>
       <div class="reveal">
         <div class="contacto-directo">
-          <a href="#">WhatsApp directo <span class="placeholder-nota">(pendiente número real)</span></a>
+          <a href="#"><span data-i18n="contacto.whatsapp">WhatsApp directo</span> <span class="placeholder-nota" data-i18n="contacto.notaWhatsapp">(pendiente número real)</span></a>
           <a href="#">reservas@casapalmera.com</a>
           <a href="https://www.instagram.com/casapalmera2026" target="_blank" rel="noopener">Instagram @casapalmera2026</a>
         </div>
@@ -652,19 +663,19 @@ footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26p
     <div class="footer-grid">
       <div>
         <div class="footer-marca">Casa Palmera</div>
-        <p>Alojamiento vacacional en El Mojón, San Pedro del Pinatar. Entre el Mediterráneo y el Mar Menor.</p>
+        <p data-i18n="footer.text">Alojamiento vacacional en El Mojón, San Pedro del Pinatar. Entre el Mediterráneo y el Mar Menor.</p>
       </div>
-      <div class="footer-col"><h5>Explorar</h5><ul><li><a href="#casa">La casa</a></li><li><a href="#galeria">Galería</a></li><li><a href="#zona">La zona</a></li></ul></div>
-      <div class="footer-col"><h5>Reservar</h5><ul><li><a href="#">Booking.com</a></li><li><a href="#">Airbnb</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
-      <div class="footer-col"><h5>Síguenos</h5><ul><li><a href="https://www.instagram.com/casapalmera2026" target="_blank" rel="noopener">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Google Maps</a></li></ul></div>
+      <div class="footer-col"><h5 data-i18n="footer.explorar">Explorar</h5><ul><li><a href="#casa" data-i18n="nav.casa">La casa</a></li><li><a href="#galeria" data-i18n="nav.galeria">Galería</a></li><li><a href="#zona" data-i18n="nav.zona">La zona</a></li></ul></div>
+      <div class="footer-col"><h5 data-i18n="footer.reservar">Reservar</h5><ul><li><a href="#">Booking.com</a></li><li><a href="#">Airbnb</a></li><li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5 data-i18n="footer.siguenos">Síguenos</h5><ul><li><a href="https://www.instagram.com/casapalmera2026" target="_blank" rel="noopener">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Google Maps</a></li></ul></div>
     </div>
-    <div class="footer-abajo"><span>© 2026 Casa Palmera · San Pedro del Pinatar, Murcia</span><span>Licencia turística nº XXXXXXXX</span></div>
+    <div class="footer-abajo"><span>© 2026 Casa Palmera · San Pedro del Pinatar, Murcia</span><span data-i18n="footer.licencia">Licencia turística nº XXXXXXXX</span></div>
   </div>
 </footer>
 
 <div class="fijo">
-  <div><strong>Casa Palmera</strong><span>El Mojón, San Pedro del Pinatar</span></div>
-  <a href="#contacto" class="btn btn-primario">Reservar</a>
+  <div><strong>Casa Palmera</strong><span data-i18n="fijo.ubicacion">El Mojón, San Pedro del Pinatar</span></div>
+  <a href="#contacto" class="btn btn-primario" data-i18n="hero.btnReservar">Reservar</a>
 </div>
 
 <script type="module" src="/src/main.js"></script>
