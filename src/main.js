@@ -37,9 +37,8 @@ const heroSlidesEl = document.getElementById('heroSlides');
 const fotosHero = [
   '/images/hero.jpg',
   '/images/galeria/salon-2.jpg',
-  '/images/galeria/terraza-1.jpg',
   '/images/galeria/cocina-1.jpg',
-  '/images/galeria/exterior-3.jpg',
+  '/images/galeria/salon-4.jpg',
 ];
 if (heroSlidesEl) {
   heroSlidesEl.innerHTML = fotosHero
