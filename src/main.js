@@ -32,24 +32,50 @@ const observador = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach((el) => observador.observe(el));
 
-// Mosaico de galería: 16 fotos curadas, sin pestañas ni filtros
+// Carrusel del hero: transición suave entre varias fotos reales de la casa
+const heroSlidesEl = document.getElementById('heroSlides');
+const fotosHero = [
+  '/images/hero.jpg',
+  '/images/galeria/salon-2.jpg',
+  '/images/galeria/terraza-1.jpg',
+  '/images/galeria/cocina-1.jpg',
+  '/images/galeria/exterior-3.jpg',
+];
+if (heroSlidesEl) {
+  heroSlidesEl.innerHTML = fotosHero
+    .map((src, i) => `<img class="hero-slide${i === 0 ? ' activo' : ''}" src="${src}" alt="Casa Palmera">`)
+    .join('');
+  const slides = heroSlidesEl.querySelectorAll('.hero-slide');
+  let indiceActual = 0;
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[indiceActual].classList.remove('activo');
+      indiceActual = (indiceActual + 1) % slides.length;
+      slides[indiceActual].classList.add('activo');
+    }, 4500);
+  }
+}
+
+// Mosaico de galería: fotografías reales de la casa, sin etiquetas de estancia
+// (se omiten los textos por estancia para no etiquetar una foto con la
+// categoría equivocada)
 const fotosMosaico = [
-  { src: '/images/galeria/terraza-1.jpg', alt: 'Terraza', etiqueta: 'Terraza', clase: 'm-g1' },
-  { src: '/images/galeria/salon-2.jpg', alt: 'Salón', etiqueta: 'Salón', clase: 'm-g2' },
-  { src: '/images/galeria/cocina-1.jpg', alt: 'Cocina', etiqueta: 'Cocina', clase: 'm-g3' },
-  { src: '/images/galeria/habitaciones-1.jpg', alt: 'Habitación', etiqueta: 'Habitaciones', clase: 'm-g4' },
-  { src: '/images/galeria/playa-2.jpg', alt: 'Playa cercana', etiqueta: 'Playa', clase: 'm-g5' },
-  { src: '/images/galeria/exterior-1.jpg', alt: 'Exterior de la casa', etiqueta: 'Exterior', clase: 'm-g6' },
-  { src: '/images/galeria/banos-2.jpg', alt: 'Baño', etiqueta: 'Baño', clase: 'm-g7' },
-  { src: '/images/galeria/atardeceres-2.jpg', alt: 'Atardecer', etiqueta: 'Atardeceres', clase: 'm-g8' },
-  { src: '/images/galeria/habitaciones-3.jpg', alt: 'Habitación', etiqueta: 'Habitaciones', clase: 'm-g9' },
-  { src: '/images/galeria/cocina-3.jpg', alt: 'Cocina', etiqueta: 'Cocina' },
-  { src: '/images/galeria/terraza-3.jpg', alt: 'Terraza', etiqueta: 'Terraza' },
-  { src: '/images/galeria/playa-4.jpg', alt: 'Playa cercana', etiqueta: 'Playa' },
-  { src: '/images/galeria/salon-4.jpg', alt: 'Salón', etiqueta: 'Salón' },
-  { src: '/images/galeria/exterior-3.jpg', alt: 'Exterior de la casa', etiqueta: 'Exterior' },
-  { src: '/images/galeria/atardeceres-4.jpg', alt: 'Atardecer', etiqueta: 'Atardeceres' },
-  { src: '/images/galeria/banos-4.jpg', alt: 'Baño', etiqueta: 'Baño' },
+  { src: '/images/galeria/terraza-1.jpg', alt: 'Casa Palmera — terraza', clase: 'm-g1' },
+  { src: '/images/galeria/salon-2.jpg', alt: 'Casa Palmera — salón', clase: 'm-g2' },
+  { src: '/images/galeria/cocina-1.jpg', alt: 'Casa Palmera — cocina', clase: 'm-g3' },
+  { src: '/images/galeria/habitaciones-1.jpg', alt: 'Casa Palmera — habitación', clase: 'm-g4' },
+  { src: '/images/galeria/playa-2.jpg', alt: 'Playa cercana a Casa Palmera', clase: 'm-g5' },
+  { src: '/images/galeria/exterior-1.jpg', alt: 'Casa Palmera — exterior', clase: 'm-g6' },
+  { src: '/images/galeria/banos-2.jpg', alt: 'Casa Palmera — baño', clase: 'm-g7' },
+  { src: '/images/galeria/atardeceres-2.jpg', alt: 'Atardecer cerca de Casa Palmera', clase: 'm-g8' },
+  { src: '/images/galeria/habitaciones-3.jpg', alt: 'Casa Palmera — habitación', clase: 'm-g9' },
+  { src: '/images/galeria/cocina-3.jpg', alt: 'Casa Palmera — cocina' },
+  { src: '/images/galeria/terraza-3.jpg', alt: 'Casa Palmera — terraza' },
+  { src: '/images/galeria/playa-4.jpg', alt: 'Playa cercana a Casa Palmera' },
+  { src: '/images/galeria/salon-4.jpg', alt: 'Casa Palmera — salón' },
+  { src: '/images/galeria/exterior-3.jpg', alt: 'Casa Palmera — exterior' },
+  { src: '/images/galeria/atardeceres-4.jpg', alt: 'Atardecer cerca de Casa Palmera' },
+  { src: '/images/galeria/banos-4.jpg', alt: 'Casa Palmera — baño' },
 ];
 
 const mosaico = document.getElementById('mosaico');
@@ -59,7 +85,6 @@ if (mosaico) {
       (f) => `
     <div class="foto ${f.clase || ''}">
       <img src="${f.src}" alt="${f.alt}" loading="lazy">
-      <span>${f.etiqueta}</span>
     </div>`
     )
     .join('');
