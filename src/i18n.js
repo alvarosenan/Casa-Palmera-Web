@@ -147,7 +147,7 @@ export const translations = {
   'footer.explorar': { es: 'Explorar', en: 'Explore' },
   'footer.reservar': { es: 'Reservar', en: 'Book' },
   'footer.siguenos': { es: 'Síguenos', en: 'Follow us' },
-  'footer.licencia': { es: 'Licencia turística nº XXXXXXXX', en: 'Tourist licence No. XXXXXXXX' },
+  'footer.licencia': { es: 'Licencia turística nº CV-VUT0519116-A', en: 'Tourist licence No. CV-VUT0519116-A' },
 
   'fijo.ubicacion': { es: 'El Mojón, San Pedro del Pinatar', en: 'El Mojón, San Pedro del Pinatar' },
 };
