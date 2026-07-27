@@ -1,0 +1,21 @@
+# dependencias
+node_modules/
+
+# build
+dist/
+.vite/
+
+# entorno
+.env
+.env.local
+.env.*.local
+
+# sistema
+.DS_Store
+Thumbs.db
+
+# editores
+.vscode/
+.idea/
+*.log
+npm-debug.log*

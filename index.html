@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Palmera — Villa en El Mojón, San Pedro del Pinatar</title>
+<meta name="description" content="Casa Palmera: villa vacacional entre el Mediterráneo y el Mar Menor, en El Mojón, San Pedro del Pinatar. Playas, salinas, flamencos y la Costa Cálida a tu alcance.">
+<meta property="og:title" content="Casa Palmera — El Mojón, San Pedro del Pinatar">
+<meta property="og:description" content="Villa vacacional entre el Mediterráneo y el Mar Menor. A 3 minutos andando de la playa.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/images/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#FAF6EE;
+  --crema2:#F1E9D8;
+  --blanco:#FFFFFF;
+  --marino:#12283F;
+  --marino2:#1E3C58;
+  --marino-suave:rgba(18,40,63,0.66);
+  --linea:rgba(18,40,63,0.12);
+  --sombra:0 30px 60px rgba(18,40,63,0.14);
+  --ff-display:'Cormorant Garamond', serif;
+  --ff-body:'Jost', sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff-body); font-weight:300; color:var(--marino); background:var(--crema); line-height:1.7; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit; cursor:pointer; border:none; background:none;}
+h1,h2,h3,h4{font-family:var(--ff-display); font-weight:400; line-height:1.08;}
+.wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+@media(max-width:640px){.wrap{padding:0 20px;}}
+.palma{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.1; stroke-linecap:round; stroke-linejoin:round;}
+.eyebrow{font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--marino-suave); display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+.eyebrow .palma{width:14px; height:14px; opacity:.6;}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:16px 32px; font-size:12.5px; letter-spacing:0.12em; text-transform:uppercase; transition:all .35s ease;}
+.btn-primario{background:var(--marino); color:var(--crema); border:1px solid var(--marino);}
+.btn-primario:hover{background:transparent; color:var(--marino);}
+.btn-claro{background:var(--crema); color:var(--marino); border:1px solid var(--crema);}
+.btn-claro:hover{background:transparent; color:var(--crema);}
+.btn-fantasma{border:1px solid rgba(250,246,238,0.55); color:var(--crema);}
+.btn-fantasma:hover{background:rgba(250,246,238,0.14);}
+section{position:relative;}
+.pad{padding:120px 0;}
+@media(max-width:900px){.pad{padding:76px 0;}}
+.cab{max-width:600px; margin-bottom:56px;}
+.cab h2{font-size:clamp(30px,4vw,46px); font-style:italic; margin-bottom:16px;}
+.cab p{color:var(--marino-suave); font-size:16px; max-width:480px;}
+.centro{margin-left:auto; margin-right:auto; text-align:center;}
+.reveal{opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1; transform:none;}
+
+/* ola decorativa: el "marco de agua" */
+.ola{display:block; width:100%; line-height:0;}
+.ola svg{width:100%; height:70px; display:block;}
+.ola-clara path{fill:var(--crema);}
+.ola-crema2 path{fill:var(--crema2);}
+.ola-marino path{fill:var(--marino);}
+.ola-blanco path{fill:var(--blanco);}
+
+/* ============ NAV ============ */
+.nav{position:fixed; top:0; left:0; right:0; z-index:200; padding:26px 0; transition:all .4s ease;}
+.nav .wrap{display:flex; align-items:center; justify-content:space-between;}
+.nav-logo{font-family:var(--ff-display); font-size:23px; font-style:italic; color:var(--crema); display:flex; align-items:center; gap:9px;}
+.nav-links{display:flex; align-items:center; gap:34px;}
+.nav-links a{font-size:11.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--crema); opacity:.88;}
+.nav .btn-claro{padding:11px 22px; font-size:10.5px;}
+.nav-burger{display:none; flex-direction:column; gap:6px; width:24px;}
+.nav-burger span{height:1px; background:var(--crema); width:100%;}
+.nav.scrolled{background:rgba(250,246,238,0.94); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--linea); padding:16px 0;}
+.nav.scrolled .nav-logo, .nav.scrolled .nav-links a{color:var(--marino);}
+.nav.scrolled .btn-claro{background:var(--marino); color:var(--crema); border-color:var(--marino);}
+.nav.scrolled .nav-burger span{background:var(--marino);}
+@media(max-width:880px){
+  .nav-links{position:fixed; top:0; right:-100%; height:100vh; width:76%; max-width:320px; background:var(--crema); flex-direction:column; justify-content:center; align-items:flex-start; padding:0 40px; transition:right .5s cubic-bezier(.16,1,.3,1); gap:28px;}
+  .nav-links.abierto{right:0; box-shadow:-20px 0 50px rgba(0,0,0,.12);}
+  .nav-links a{color:var(--marino)!important; font-size:16px;}
+  .nav-cta .btn-claro{display:none;}
+  .nav-burger{display:flex;}
+  .nav-burger.activo span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-burger.activo span:nth-child(2){opacity:0;}
+  .nav-burger.activo span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+}
+
+/* ============ HERO ============ */
+.hero{height:100vh; min-height:680px; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; background:linear-gradient(180deg, rgba(18,40,63,.4) 0%, rgba(18,40,63,.12) 45%, rgba(18,40,63,.8) 100%), var(--marino) url('/images/hero.jpg') center/cover no-repeat; color:var(--crema);}
+.hero-contenido{position:relative; z-index:2; max-width:720px; padding:0 24px;}
+.hero-kicker{font-size:12px; letter-spacing:0.3em; text-transform:uppercase; opacity:.85; margin-bottom:24px;}
+.hero h1{font-size:clamp(54px,9vw,110px); font-weight:400; font-style:italic; margin-bottom:22px;}
+.hero-tagline{font-size:clamp(16px,1.6vw,19px); font-weight:300; max-width:460px; margin:0 auto 42px; opacity:.94;}
+.hero-botones{display:flex; flex-wrap:wrap; gap:14px; justify-content:center;}
+.hero-ola{position:absolute; left:0; right:0; bottom:-1px; z-index:3;}
+
+/* ============ LA CASA ============ */
+.casa{background:var(--crema);}
+.casa-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;}
+@media(max-width:900px){.casa-grid{grid-template-columns:1fr; gap:36px;}}
+.casa-foto{border-radius:4px; overflow:hidden; aspect-ratio:4/5;}
+.casa-foto img{width:100%; height:100%; object-fit:cover;}
+.casa-texto p{color:var(--marino-suave); font-size:16px; margin-bottom:20px; max-width:460px;}
+.casa-cifras{display:flex; gap:36px; margin:32px 0 30px; flex-wrap:wrap; border-top:1px solid var(--linea); padding-top:28px;}
+.cifra b{font-family:var(--ff-display); font-size:34px; font-style:italic; display:block; color:var(--marino);}
+.cifra span{font-size:10.5px; color:var(--marino-suave); text-transform:uppercase; letter-spacing:.08em;}
+.amenidades{display:grid; grid-template-columns:1fr 1fr; gap:2px 30px;}
+.amenidad{padding:10px 0; font-size:14px; display:flex; align-items:center; gap:10px; color:var(--marino-suave);}
+.amenidad .palma{width:13px; height:13px; opacity:.55; flex-shrink:0;}
+@media(max-width:460px){.amenidades{grid-template-columns:1fr;}}
+
+/* ============ GALERÍA (mosaico, sin filtros) ============ */
+.galeria{background:var(--crema2);}
+.mosaico{display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:130px; gap:10px;}
+.mosaico .foto{position:relative; overflow:hidden; border-radius:2px; cursor:pointer; background:var(--marino);}
+.mosaico .foto img{width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.16,1,.3,1);}
+.mosaico .foto:hover img{transform:scale(1.06);}
+.mosaico .foto span{position:absolute; left:12px; bottom:10px; color:var(--crema); font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:0; transition:opacity .3s ease; text-shadow:0 2px 8px rgba(0,0,0,.5);}
+.mosaico .foto:hover span{opacity:.95;}
+.m-g1{grid-column:span 3; grid-row:span 2;}
+.m-g2{grid-column:span 3; grid-row:span 1;}
+.m-g3{grid-column:span 3; grid-row:span 1;}
+.m-g4{grid-column:span 2; grid-row:span 2;}
+.m-g5{grid-column:span 2; grid-row:span 2;}
+.m-g6{grid-column:span 2; grid-row:span 2;}
+.m-g7{grid-column:span 2; grid-row:span 1;}
+.m-g8{grid-column:span 2; grid-row:span 1;}
+.m-g9{grid-column:span 2; grid-row:span 1;}
+@media(max-width:900px){
+  .mosaico{grid-template-columns:repeat(2,1fr); grid-auto-rows:170px;}
+  .m-g1,.m-g2,.m-g3,.m-g4,.m-g5,.m-g6,.m-g7,.m-g8,.m-g9{grid-column:span 1; grid-row:span 1;}
+  .m-g1{grid-column:span 2; grid-row:span 2;}
+}
+.galeria-mas{text-align:center; margin-top:30px;}
+
+.lightbox{position:fixed; inset:0; background:rgba(18,40,63,.96); z-index:500; display:none; align-items:center; justify-content:center; padding:40px;}
+.lightbox.activo{display:flex;}
+.lightbox img{max-width:90vw; max-height:82vh; object-fit:contain; box-shadow:var(--sombra);}
+.lightbox-cerrar{position:absolute; top:28px; right:32px; color:var(--crema); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; border:1px solid rgba(255,255,255,.35); padding:10px 16px;}
+
+/* ============ DISPONIBILIDAD ============ */
+.dispo{background:var(--crema);}
+.dispo-caja{background:var(--marino); color:var(--crema); border-radius:4px; padding:56px; display:grid; grid-template-columns:1fr 1.05fr; gap:64px; align-items:center;}
+@media(max-width:900px){.dispo-caja{grid-template-columns:1fr; padding:38px 26px; gap:34px;}}
+.dispo-caja h3{font-size:30px; font-style:italic; margin-bottom:14px;}
+.dispo-caja p{opacity:.8; margin-bottom:26px; max-width:380px;}
+.mini-cal{border:1px solid rgba(250,246,238,.2); padding:24px;}
+.mini-cal-cab{display:flex; justify-content:space-between; margin-bottom:16px; font-size:12px; letter-spacing:.1em; text-transform:uppercase;}
+.mini-cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:5px; text-align:center; font-size:12px;}
+.mini-cal-grid span{padding:9px 0; opacity:.5;}
+.mini-cal-grid span.disp{background:rgba(250,246,238,.14); opacity:1;}
+.mini-cal-grid span.res{background:rgba(0,0,0,.2); text-decoration:line-through; opacity:.35;}
+.leyenda{display:flex; gap:18px; margin-top:16px; font-size:11.5px; opacity:.7;}
+.leyenda span{display:flex; align-items:center; gap:6px;}
+.punto{width:7px; height:7px; border-radius:50%; display:inline-block;}
+.punto.disp{background:var(--crema);} .punto.res{background:rgba(250,246,238,.28);}
+
+/* ============ ZONA ============ */
+.zona{background:var(--crema);}
+.zona-foto-ancha{border-radius:4px; overflow:hidden; margin-bottom:56px; aspect-ratio:21/8; position:relative;}
+.zona-foto-ancha img{width:100%; height:100%; object-fit:cover;}
+.zona-foto-ancha .tag{position:absolute; left:28px; bottom:24px; color:var(--crema); font-family:var(--ff-display); font-size:26px; font-style:italic; text-shadow:0 2px 12px rgba(0,0,0,.4);}
+.categoria{margin-bottom:44px; padding-top:30px; border-top:1px solid var(--linea);}
+.categoria h3{font-size:21px; font-style:italic; margin-bottom:10px;}
+.categoria-desc{color:var(--marino-suave); font-size:14px; max-width:600px; margin-bottom:14px;}
+.lista-lugares{font-size:14.5px; color:var(--marino-suave); line-height:2;}
+.lista-lugares b{color:var(--marino); font-weight:400;}
+.lista-lugares .sep{color:var(--marino-suave); opacity:.4; margin:0 8px;}
+
+/* ============ EXCURSIONES ============ */
+.excursiones{background:var(--crema2);}
+.tiempo-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); border-top:1px solid var(--linea); border-left:1px solid var(--linea); margin-bottom:60px;}
+.tiempo-celda{border-right:1px solid var(--linea); border-bottom:1px solid var(--linea); padding:24px 20px;}
+.tiempo-celda .min{font-family:var(--ff-display); font-size:29px; font-style:italic; color:var(--marino); display:block; margin-bottom:6px;}
+.tiempo-celda .min span{font-size:11.5px; font-family:var(--ff-body); color:var(--marino-suave); font-style:normal;}
+.tiempo-celda ul li{font-size:12.5px; color:var(--marino-suave); padding:2px 0;}
+.destacadas-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--linea); border:1px solid var(--linea);}
+@media(max-width:800px){.destacadas-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.destacadas-grid{grid-template-columns:1fr;}}
+.destacada{background:var(--crema2); padding:28px 24px;}
+.destacada .estrellas{opacity:.4; font-size:12px; letter-spacing:2px; margin-bottom:10px;}
+.destacada h4{font-size:19px; font-style:italic; margin-bottom:6px;}
+.destacada .tiempo{font-size:11px; color:var(--marino-suave); text-transform:uppercase; letter-spacing:.06em;}
+
+/* ============ BRÚJULA ============ */
+.brujula-sec{background:var(--marino); color:var(--crema);}
+.brujula-sec .cab p{color:rgba(250,246,238,.72);}
+.brujula-sec .eyebrow{color:rgba(250,246,238,.75);}
+.brujula{position:relative; max-width:600px; margin:0 auto; aspect-ratio:1/1; display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-rows:1fr 1fr 1fr; align-items:center; justify-items:center;}
+.brujula::before{content:''; position:absolute; inset:9%; border:1px solid rgba(250,246,238,.16); border-radius:50%;}
+.brujula::after{content:''; position:absolute; inset:27%; border:1px solid rgba(250,246,238,.24); border-radius:50%;}
+.b-centro{grid-column:2; grid-row:2; text-align:center; z-index:3;}
+.b-centro .punto{width:80px; height:80px; border-radius:50%; border:1px solid rgba(250,246,238,.4); display:flex; align-items:center; justify-content:center; margin:0 auto 10px; background:var(--marino);}
+.b-centro .punto svg{width:28px; height:28px;}
+.b-centro b{font-family:var(--ff-display); font-size:18px; font-style:italic;}
+.b-item{z-index:2; text-align:center; padding:8px;}
+.b-item .flecha{font-size:17px; opacity:.6; display:block; margin-bottom:6px;}
+.b-item b{display:block; font-size:14px;}
+.b-item span{font-size:10.5px; opacity:.6;}
+.b-norte{grid-column:2; grid-row:1;} .b-sur{grid-column:2; grid-row:3;}
+.b-oeste{grid-column:1; grid-row:2;} .b-este{grid-column:3; grid-row:2;}
+@media(max-width:600px){.brujula{grid-template-rows:auto auto auto; gap:18px 0; aspect-ratio:auto; padding:16px 0;} .b-item span{display:none;}}
+.anillos{display:flex; gap:46px; justify-content:center; margin-top:64px; flex-wrap:wrap;}
+.anillo h5{font-size:11px; letter-spacing:.1em; text-transform:uppercase; opacity:.6; margin-bottom:12px;}
+.anillo span{font-size:13.5px; opacity:.85; display:block; padding:4px 0;}
+
+/* ============ MAPA (sin filtros) ============ */
+.mapa-sec{background:var(--crema2);}
+.mapa-caja{background:var(--blanco); border-radius:4px; overflow:hidden; border:1px solid var(--linea);}
+.mapa-lienzo{height:400px; position:relative; background:repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(18,40,63,.06) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(18,40,63,.06) 40px), var(--crema2); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px; text-align:center; padding:20px;}
+.mapa-lienzo .palma{width:38px; height:38px; opacity:.35;}
+.mapa-lienzo p{color:var(--marino-suave); font-size:14px; max-width:360px;}
+.mapa-lienzo span{font-size:11px; color:var(--marino-suave); letter-spacing:.06em; text-transform:uppercase;}
+
+/* ============ GUÍAS ============ */
+.guias{background:var(--crema);}
+.guias-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--linea); border-top:1px solid var(--linea); border-bottom:1px solid var(--linea);}
+@media(max-width:700px){.guias-grid{grid-template-columns:1fr;}}
+.guia{background:var(--crema); padding:30px 6px; display:flex; justify-content:space-between; align-items:baseline; gap:20px;}
+.guia h4{font-size:19px; font-style:italic; font-weight:400;}
+.guia span{font-size:11px; color:var(--marino-suave); text-transform:uppercase; letter-spacing:.06em; white-space:nowrap;}
+
+/* ============ INFO ÚTIL ============ */
+.info{background:var(--crema2);}
+.info-grid{display:grid; grid-template-columns:repeat(5,1fr); border:1px solid var(--linea);}
+@media(max-width:800px){.info-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:500px){.info-grid{grid-template-columns:repeat(2,1fr);}}
+.info-celda{background:var(--crema); padding:24px 14px; text-align:center; border-right:1px solid var(--linea); border-bottom:1px solid var(--linea);}
+.info-celda span{font-size:12px; color:var(--marino-suave);}
+
+/* ============ OPINIONES ============ */
+.opiniones{background:var(--crema);}
+.opiniones-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--linea); border:1px solid var(--linea);}
+@media(max-width:800px){.opiniones-grid{grid-template-columns:1fr;}}
+.opinion{background:var(--crema); padding:36px 30px;}
+.opinion .estrellas{opacity:.4; font-size:12px; letter-spacing:3px; margin-bottom:16px;}
+.opinion p{font-family:var(--ff-display); font-size:19px; font-style:italic; line-height:1.5; margin-bottom:18px;}
+.opinion .autor{font-size:11px; color:var(--marino-suave); text-transform:uppercase; letter-spacing:.06em;}
+
+/* ============ FAQ ============ */
+.faq{background:var(--crema2);}
+.faq-lista{max-width:760px; margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--linea);}
+.faq-p{width:100%; text-align:left; display:flex; justify-content:space-between; align-items:center; padding:24px 4px; font-family:var(--ff-display); font-size:18px; font-style:italic; gap:20px;}
+.faq-p .signo{font-size:19px; font-family:var(--ff-body); opacity:.5; transition:transform .3s ease;}
+.faq-item.abierto .signo{transform:rotate(45deg);}
+.faq-r{max-height:0; overflow:hidden; transition:max-height .4s ease;}
+.faq-r p{padding:0 4px 24px; color:var(--marino-suave); font-size:14.5px; max-width:600px;}
+
+/* ============ CONTACTO ============ */
+.contacto{background:var(--marino); color:var(--crema);}
+.contacto .cab p{color:rgba(250,246,238,.72);}
+.contacto .eyebrow{color:rgba(250,246,238,.75);}
+.contacto-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px;}
+@media(max-width:900px){.contacto-grid{grid-template-columns:1fr; gap:42px;}}
+.campo{margin-bottom:20px;}
+.campo label{display:block; font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; opacity:.65;}
+.campo input, .campo textarea{width:100%; background:transparent; border:none; border-bottom:1px solid rgba(250,246,238,.28); color:var(--crema); font-family:var(--ff-body); font-weight:300; font-size:15px; padding:9px 2px;}
+.campo input:focus, .campo textarea:focus{outline:none; border-color:var(--crema);}
+.campo-fila{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+.contacto-directo a{display:flex; align-items:center; gap:14px; font-size:15px; padding:0 0 14px; border-bottom:1px solid rgba(250,246,238,.12); margin-bottom:14px;}
+.placeholder-nota{font-size:11px; opacity:.55; margin-top:4px;}
+
+/* ============ FOOTER ============ */
+footer{background:var(--marino); color:rgba(250,246,238,.75); padding:70px 0 26px;}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid rgba(250,246,238,.1);}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr; gap:32px;}}
+.footer-marca{font-family:var(--ff-display); font-size:22px; font-style:italic; color:var(--crema); margin-bottom:14px;}
+.footer-grid p{font-size:13px; opacity:.7; max-width:250px;}
+.footer-col h5{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--crema); opacity:.8; margin-bottom:16px;}
+.footer-col li{margin-bottom:10px; font-size:13px;}
+.footer-abajo{display:flex; justify-content:space-between; padding-top:24px; font-size:11px; opacity:.5; flex-wrap:wrap; gap:8px;}
+
+.fijo{position:fixed; bottom:0; left:0; right:0; z-index:150; background:var(--crema); border-top:1px solid var(--linea); padding:15px 20px; display:none; align-items:center; justify-content:space-between; gap:14px;}
+.fijo strong{font-family:var(--ff-display); font-size:17px; font-style:italic;}
+.fijo span{display:block; font-size:11px; color:var(--marino-suave);}
+.fijo .btn-primario{padding:12px 22px; font-size:10.5px;}
+@media(max-width:880px){.fijo{display:flex;} footer{padding-bottom:104px;}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="ico-palma" viewBox="0 0 48 48">
+    <path d="M24 44V22M24 22c0-9-4-13-10-15M24 22c0-9 4-13 10-15M24 24c-2-8-8-11-16-10M24 24c2-8 8-11 16-10M24 26c-3-6-9-8-16-6M24 26c3-6 9-8 16-6M18 44h12" stroke-width="1.1"/>
+  </symbol>
+</svg>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#inicio" class="nav-logo"><svg class="palma"><use href="#ico-palma"/></svg>Casa Palmera</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#casa">La casa</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#zona">La zona</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn-claro">Reservar</a>
+      <button class="nav-burger" id="navBurger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-contenido">
+    <p class="hero-kicker">El Mojón · San Pedro del Pinatar · Murcia</p>
+    <h1>Casa Palmera</h1>
+    <p class="hero-tagline">Tu refugio entre el Mediterráneo y el Mar Menor, a tres minutos andando de la playa.</p>
+    <div class="hero-botones">
+      <a href="#contacto" class="btn btn-claro">Reservar</a>
+      <a href="#zona" class="btn btn-fantasma">Descubrir la zona</a>
+    </div>
+  </div>
+  <div class="hero-ola ola ola-clara"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,30 C800,60 1000,10 1200,40 L1200,70 L0,70 Z"/></svg></div>
+</header>
+
+<section class="casa pad" id="casa">
+  <div class="wrap">
+    <div class="casa-grid">
+      <div class="casa-foto reveal"><img src="/images/galeria/salon-1.jpg" alt="Salón de Casa Palmera" loading="lazy"></div>
+      <div class="casa-texto reveal">
+        <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>La casa</p>
+        <h2>Una base tranquila para explorar la Costa Cálida</h2>
+        <p>Casa Palmera combina la calma de una casa mediterránea con todo lo necesario para desconectar: espacios luminosos, terraza para las tardes largas y una ubicación que te deja a minutos del mar y de las salinas.</p>
+        <div class="casa-cifras">
+          <div class="cifra"><b>5</b><span>Huéspedes</span></div>
+          <div class="cifra"><b>4</b><span>Habitaciones</span></div>
+          <div class="cifra"><b>1</b><span>Baño</span></div>
+          <div class="cifra"><b>3 min</b><span>A la playa</span></div>
+        </div>
+        <div class="amenidades">
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Aire acondicionado</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>WiFi de fibra</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Cocina equipada</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>TV</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Lavadora</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Pet friendly</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Terraza privada</div>
+          <div class="amenidad"><svg class="palma"><use href="#ico-palma"/></svg>Parking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ola ola-crema2"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,0 600,60 900,20 C1050,0 1150,30 1200,20 L1200,60 L0,60 Z"/></svg></div>
+
+<section class="galeria pad" id="galeria">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Galería</p>
+      <h2>Cada rincón de la casa</h2>
+      <p>Una fotografía real de cada espacio. Toca cualquier imagen para verla en grande.</p>
+    </div>
+    <div class="mosaico reveal" id="mosaico"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-cerrar" id="lightboxCerrar">Cerrar ✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<section class="dispo pad" id="disponibilidad">
+  <div class="wrap">
+    <div class="dispo-caja reveal">
+      <div>
+        <p class="eyebrow" style="color:rgba(250,246,238,.75);"><svg class="palma"><use href="#ico-palma"/></svg>Disponibilidad</p>
+        <h3>Reserva tus fechas</h3>
+        <p>Consulta el calendario y escríbenos para confirmar tu estancia.</p>
+        <a href="#contacto" class="btn btn-claro">Consultar fechas</a>
+      </div>
+      <div class="mini-cal">
+        <div class="mini-cal-cab"><span>‹</span><span>AGOSTO 2026</span><span>›</span></div>
+        <div class="mini-cal-grid">
+          <span style="opacity:.4">L</span><span style="opacity:.4">M</span><span style="opacity:.4">X</span><span style="opacity:.4">J</span><span style="opacity:.4">V</span><span style="opacity:.4">S</span><span style="opacity:.4">D</span>
+          <span></span><span></span><span></span><span></span><span></span><span class="disp">1</span><span class="disp">2</span>
+          <span class="disp">3</span><span class="disp">4</span><span class="res">5</span><span class="res">6</span><span class="res">7</span><span class="res">8</span><span class="res">9</span>
+          <span class="res">10</span><span class="res">11</span><span class="res">12</span><span class="res">13</span><span class="res">14</span><span class="disp">15</span><span class="disp">16</span>
+          <span class="disp">17</span><span class="disp">18</span><span class="disp">19</span><span class="disp">20</span><span class="disp">21</span><span class="disp">22</span><span class="disp">23</span>
+          <span class="disp">24</span><span class="disp">25</span><span class="disp">26</span><span class="disp">27</span><span class="disp">28</span><span class="disp">29</span><span class="disp">30</span>
+        </div>
+        <div class="leyenda"><span><i class="punto disp"></i>Disponible</span><span><i class="punto res"></i>Reservado</span></div>
+      </div>
+    </div>
+    <p class="placeholder-nota" style="margin-top:14px;">* Calendario de ejemplo — pendiente de conectar a Booking / Airbnb / iCal.</p>
+  </div>
+</section>
+
+<section class="zona pad" id="zona">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Descubre la zona</p>
+      <h2>Aquí hay mucho que hacer</h2>
+      <p>Casa Palmera es el punto de partida perfecto para playas, salinas, gastronomía y la Costa Cálida entera.</p>
+    </div>
+
+    <div class="zona-foto-ancha reveal">
+      <img src="/images/galeria/playa-1.jpg" alt="Playa cerca de Casa Palmera" loading="lazy">
+      <span class="tag">A 3 minutos andando</span>
+    </div>
+
+    <div class="categoria reveal">
+      <h3>Playas</h3>
+      <p class="categoria-desc">Las playas de El Mojón limitan con el Parque Regional de las Salinas y Arenales: paseo marítimo, arena fina y servicios accesibles.</p>
+      <p class="lista-lugares"><b>Playa El Mojón</b><span class="sep">·</span>Torre Derribada<span class="sep">·</span>La Llana<span class="sep">·</span>Las Salinas<span class="sep">·</span>Barraca Quemada<span class="sep">·</span>Punta de Algas<span class="sep">·</span>Villananitos<span class="sep">·</span>La Puntica<span class="sep">·</span>Las Higuericas<span class="sep">·</span>Mil Palmeras<span class="sep">·</span>Las Encañizadas</p>
+    </div>
+
+    <div class="categoria reveal">
+      <h3>Naturaleza</h3>
+      <p class="categoria-desc">El parque combina salinas en explotación, senderos, observatorios, playas naturales y uno de los humedales más importantes del Mediterráneo.</p>
+      <p class="lista-lugares"><b>Parque Regional Salinas y Arenales</b><span class="sep">·</span>Flamencos<span class="sep">·</span>Observatorios de aves<span class="sep">·</span>Senderos<span class="sep">·</span>Dunas<span class="sep">·</span>Carril bici<span class="sep">·</span>Encañizadas<span class="sep">·</span>Molinos de Quintín<span class="sep">·</span>Molino de la Calcetera</p>
+    </div>
+
+    <div class="categoria reveal">
+      <h3>Deportes y actividad</h3>
+      <p class="lista-lugares">Paddle surf<span class="sep">·</span>Kayak<span class="sep">·</span>Windsurf<span class="sep">·</span>Vela<span class="sep">·</span>Bicicleta<span class="sep">·</span>Senderismo<span class="sep">·</span>Birdwatching<span class="sep">·</span>Buceo<span class="sep">·</span>Snorkel<span class="sep">·</span>Pesca deportiva</p>
+    </div>
+
+    <div class="categoria reveal">
+      <h3>Restaurantes y heladerías</h3>
+      <p class="lista-lugares">Venezuela<span class="sep">·</span>El Rubio 360°<span class="sep">·</span>Casa Lucrecia<span class="sep">·</span>La Casa del Reloj<span class="sep">·</span>El Rincón Italiano<span class="sep">·</span>El Mosqui<span class="sep">·</span>Los Molinos<span class="sep">·</span><b>Heladería Galán</b><span class="sep">·</span>Sirvent<span class="sep">·</span>Gelateria Italiana</p>
+    </div>
+
+    <div class="categoria reveal">
+      <h3>Supermercados y puertos</h3>
+      <p class="lista-lugares"><b>Supermercado Buen Día</b> — junto a la casa<span class="sep">·</span>Mercadona<span class="sep">·</span>Lidl<span class="sep">·</span>Aldi<span class="sep">·</span>Consum<span class="sep">·</span>Puerto Deportivo de San Pedro<span class="sep">·</span>Puerto Tomás Maestre<span class="sep">·</span>Lo Pagán</p>
+    </div>
+
+    <div class="categoria reveal" style="border-bottom:1px solid var(--linea); padding-bottom:44px;">
+      <h3>Baños de lodo y spa</h3>
+      <p class="lista-lugares"><b>Baños de lodo de Lo Pagán</b><span class="sep">·</span>Talasoterapia<span class="sep">·</span>Spa<span class="sep">·</span>Masajes</p>
+    </div>
+  </div>
+</section>
+
+<section class="excursiones pad" id="excursiones">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Lugares para visitar</p>
+      <h2>A un paseo en coche</h2>
+    </div>
+    <div class="tiempo-grid reveal">
+      <div class="tiempo-celda"><span class="min">5 <span>min</span></span><ul><li>Lo Pagán</li><li>San Pedro del Pinatar</li></ul></div>
+      <div class="tiempo-celda"><span class="min">10 <span>min</span></span><ul><li>Pilar de la Horadada</li><li>Torre de la Horadada</li></ul></div>
+      <div class="tiempo-celda"><span class="min">15 <span>min</span></span><ul><li>Santiago de la Ribera</li></ul></div>
+      <div class="tiempo-celda"><span class="min">20 <span>min</span></span><ul><li>La Manga Norte</li></ul></div>
+      <div class="tiempo-celda"><span class="min">30 <span>min</span></span><ul><li>Cabo Roig</li><li>Campoamor</li></ul></div>
+      <div class="tiempo-celda"><span class="min">35 <span>min</span></span><ul><li>Cartagena</li></ul></div>
+      <div class="tiempo-celda"><span class="min">45 <span>min</span></span><ul><li>Murcia</li></ul></div>
+      <div class="tiempo-celda"><span class="min">1h <span>00</span></span><ul><li>Alicante</li></ul></div>
+    </div>
+    <div class="destacadas-grid reveal">
+      <div class="destacada"><div class="estrellas">★★★★★</div><h4>Calblanque</h4><p class="tiempo">35 min en coche</p></div>
+      <div class="destacada"><div class="estrellas">★★★★☆</div><h4>Cabo de Palos</h4><p class="tiempo">30 min en coche</p></div>
+      <div class="destacada"><div class="estrellas">★★★★☆</div><h4>Cartagena romana</h4><p class="tiempo">35 min en coche</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="ola ola-marino"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 C300,50 600,0 900,30 C1050,45 1150,10 1200,25 L1200,60 L0,60 Z"/></svg></div>
+
+<section class="brujula-sec pad">
+  <div class="wrap">
+    <div class="cab centro reveal" style="margin-left:auto; margin-right:auto;">
+      <p class="eyebrow" style="justify-content:center;"><svg class="palma"><use href="#ico-palma"/></svg>Mapa ilustrado</p>
+      <h2>Casa Palmera, en el centro de todo</h2>
+    </div>
+    <div class="brujula reveal">
+      <div class="b-item b-norte"><span class="flecha">↑</span><b>Playa El Mojón</b><span>3 min andando</span></div>
+      <div class="b-item b-oeste"><span class="flecha">←</span><b>Parque Regional Salinas</b><span>Flamencos · Molinos</span></div>
+      <div class="b-centro"><div class="punto"><svg class="palma" style="opacity:.9"><use href="#ico-palma"/></svg></div><b>Casa Palmera</b></div>
+      <div class="b-item b-este"><span class="flecha">→</span><b>Buen Día, farmacia, restaurantes</b><span>Supermercado · Heladería</span></div>
+      <div class="b-item b-sur"><span class="flecha">↓</span><b>Lo Pagán</b><span>Baños de lodo · Puerto</span></div>
+    </div>
+    <div class="anillos reveal">
+      <div class="anillo"><h5>15–20 min</h5><span>Torre de la Horadada</span><span>Santiago de la Ribera</span><span>La Manga</span></div>
+      <div class="anillo"><h5>30–60 min</h5><span>Calblanque</span><span>Cartagena</span><span>Murcia</span><span>Alicante</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ola ola-crema2" style="transform:scaleY(-1);"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,0 600,60 900,20 C1050,0 1150,30 1200,20 L1200,60 L0,60 Z"/></svg></div>
+
+<section class="mapa-sec pad">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Mapa</p>
+      <h2>Todo, cerca</h2>
+    </div>
+    <div class="mapa-caja reveal">
+      <div class="mapa-lienzo">
+        <svg class="palma"><use href="#ico-palma"/></svg>
+        <p>Aquí se integrará el mapa interactivo (Google Maps) con la casa y los puntos de interés.</p>
+        <span>Pendiente de clave de API</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guias pad" id="guias">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Guías del destino</p>
+      <h2>Para planear tu estancia</h2>
+    </div>
+    <div class="guias-grid reveal">
+      <div class="guia"><h4>Las mejores playas cerca de Casa Palmera</h4><span>Próximamente</span></div>
+      <div class="guia"><h4>Qué hacer en San Pedro en 3 días</h4><span>Próximamente</span></div>
+      <div class="guia"><h4>Ruta por las Salinas</h4><span>Próximamente</span></div>
+      <div class="guia"><h4>Dónde ver flamencos</h4><span>Próximamente</span></div>
+      <div class="guia"><h4>Los mejores atardeceres</h4><span>Próximamente</span></div>
+      <div class="guia"><h4>Guía para familias</h4><span>Próximamente</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="info pad">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Información útil</p>
+      <h2>Todo lo práctico</h2>
+    </div>
+    <div class="info-grid reveal">
+      <div class="info-celda"><span>Aeropuerto de Murcia · 45 min</span></div>
+      <div class="info-celda"><span>Aeropuerto de Alicante · 1 h</span></div>
+      <div class="info-celda"><span>Taxi y Uber disponibles</span></div>
+      <div class="info-celda"><span>Parking privado</span></div>
+      <div class="info-celda"><span>Hospital a 15 min</span></div>
+      <div class="info-celda"><span>Farmacias en El Mojón</span></div>
+      <div class="info-celda"><span>Emergencias · 112</span></div>
+      <div class="info-celda"><span>Clima mediterráneo</span></div>
+      <div class="info-celda"><span>Se admiten mascotas</span></div>
+      <div class="info-celda"><span>Guía de equipaje</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="opiniones pad">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Opiniones</p>
+      <h2>Lo que dicen nuestros huéspedes</h2>
+    </div>
+    <div class="opiniones-grid reveal">
+      <div class="opinion"><div class="estrellas">★★★★★</div><p>"Una ubicación perfecta para descubrir tanto el Mar Menor como el Mediterráneo."</p><div class="autor">Familia González</div></div>
+      <div class="opinion"><div class="estrellas">★★★★★</div><p>"La casa tiene todo lo que necesitas y el barrio es tranquilísimo. Volveremos."</p><div class="autor">Marta y Pau</div></div>
+      <div class="opinion"><div class="estrellas">★★★★★</div><p>"Ir andando a la playa por la mañana y cenar en la terraza al volver. Así de fácil."</p><div class="autor">Anna R.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq pad" id="faq">
+  <div class="wrap">
+    <div class="cab centro reveal" style="margin-left:auto; margin-right:auto;">
+      <p class="eyebrow" style="justify-content:center;"><svg class="palma"><use href="#ico-palma"/></svg>Preguntas frecuentes</p>
+      <h2>Todo lo que necesitas saber</h2>
+    </div>
+    <div class="faq-lista reveal">
+      <div class="faq-item"><button class="faq-p">¿Aceptáis mascotas?<span class="signo">+</span></button><div class="faq-r"><p>Sí, Casa Palmera es pet friendly. Escríbenos antes de reservar para confirmar detalles.</p></div></div>
+      <div class="faq-item"><button class="faq-p">¿Hay WiFi?<span class="signo">+</span></button><div class="faq-r"><p>Sí, WiFi de fibra en toda la casa.</p></div></div>
+      <div class="faq-item"><button class="faq-p">¿Se puede aparcar?<span class="signo">+</span></button><div class="faq-r"><p>Sí, la casa cuenta con parking privado.</p></div></div>
+      <div class="faq-item"><button class="faq-p">¿Está cerca de la playa?<span class="signo">+</span></button><div class="faq-r"><p>La Playa de El Mojón está a 3 minutos andando.</p></div></div>
+      <div class="faq-item"><button class="faq-p">¿Cómo funciona el check-in?<span class="signo">+</span></button><div class="faq-r"><p>Check-in autónomo desde las 16:00h, con instrucciones por WhatsApp antes de tu llegada.</p></div></div>
+      <div class="faq-item"><button class="faq-p">¿Hay supermercado cerca?<span class="signo">+</span></button><div class="faq-r"><p>Sí, el Supermercado Buen Día está a un paseo, y Mercadona y Lidl a pocos minutos en coche.</p></div></div>
+      <div class="faq-item"><button class="faq-p">¿Cuántas personas caben?<span class="signo">+</span></button><div class="faq-r"><p>Por ahora, Casa Palmera tiene capacidad para 5 huéspedes.</p></div></div>
+      <div class="faq-item"><button class="faq-p">¿Tenéis licencia turística?<span class="signo">+</span></button><div class="faq-r"><p>Sí, en regla (número indicado en el pie de página).</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto pad" id="contacto">
+  <div class="wrap">
+    <div class="cab reveal">
+      <p class="eyebrow"><svg class="palma"><use href="#ico-palma"/></svg>Contacto</p>
+      <h2>Cuéntanos tus fechas</h2>
+      <p>Responderemos en menos de 24 horas con disponibilidad y precio.</p>
+    </div>
+    <div class="contacto-grid">
+      <form class="reveal" onsubmit="event.preventDefault(); alert('Formulario de ejemplo — conéctalo a tu email o CRM.');">
+        <div class="campo-fila">
+          <div class="campo"><label>Nombre</label><input type="text" required></div>
+          <div class="campo"><label>Email</label><input type="email" required></div>
+        </div>
+        <div class="campo-fila">
+          <div class="campo"><label>Entrada</label><input type="date"></div>
+          <div class="campo"><label>Salida</label><input type="date"></div>
+        </div>
+        <div class="campo"><label>Mensaje</label><textarea rows="4"></textarea></div>
+        <button class="btn btn-claro" style="margin-top:12px;">Enviar consulta</button>
+        <p class="placeholder-nota">* Formulario de ejemplo — falta conectarlo a un email o servicio como Formspree.</p>
+      </form>
+      <div class="reveal">
+        <div class="contacto-directo">
+          <a href="#">WhatsApp directo <span class="placeholder-nota">(pendiente número real)</span></a>
+          <a href="#">reservas@casapalmera.com</a>
+          <a href="#">Instagram @casapalmera.elmojon <span class="placeholder-nota">(pendiente cuenta real)</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-marca">Casa Palmera</div>
+        <p>Villa vacacional en El Mojón, San Pedro del Pinatar. Entre el Mediterráneo y el Mar Menor.</p>
+      </div>
+      <div class="footer-col"><h5>Explorar</h5><ul><li><a href="#casa">La casa</a></li><li><a href="#galeria">Galería</a></li><li><a href="#zona">La zona</a></li></ul></div>
+      <div class="footer-col"><h5>Reservar</h5><ul><li><a href="#">Booking.com</a></li><li><a href="#">Airbnb</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+      <div class="footer-col"><h5>Síguenos</h5><ul><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Google Maps</a></li></ul></div>
+    </div>
+    <div class="footer-abajo"><span>© 2026 Casa Palmera · San Pedro del Pinatar, Murcia</span><span>Licencia turística nº XXXXXXXX</span></div>
+  </div>
+</footer>
+
+<div class="fijo">
+  <div><strong>Casa Palmera</strong><span>El Mojón, San Pedro del Pinatar</span></div>
+  <a href="#contacto" class="btn btn-primario">Reservar</a>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

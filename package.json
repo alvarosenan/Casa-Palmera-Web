@@ -1,0 +1,15 @@
+{
+  "name": "casa-palmera-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Web de Casa Palmera, villa vacacional en El Mojón, San Pedro del Pinatar (Murcia).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.1.5"
+  }
+}
