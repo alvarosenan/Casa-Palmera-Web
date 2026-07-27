@@ -1,6 +1,6 @@
 # Casa Palmera — Web
 
-Web de presentación y reserva de **Casa Palmera**, villa vacacional en El Mojón (San Pedro del Pinatar, Murcia), entre el Mediterráneo y el Mar Menor.
+Web oficial de Casa Palmera, alojamiento vacacional en El Mojón (San Pedro del Pinatar, Murcia), entre el Mediterráneo y el Mar Menor.
 
 Proyecto independiente, sin relación con ningún otro repositorio.
 
